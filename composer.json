@@ -1,0 +1,9 @@
+{
+    "name" : "wf/tickets",
+    "autoload": {
+        "psr-4": {
+            "App\\" : "app/",
+            "Api\\" : "api/"
+        }
+    }
+}
