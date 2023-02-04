@@ -21,6 +21,12 @@ class Venda
     public $id_evento;
 
     /**
+     * Define o ID do Evento na tabela de vendas.
+     * @var string
+     */
+    public $id_ingresso;
+
+    /**
      * Define a quantidade de ingressos que foram adquiridos.
      * @var integer
      */
@@ -63,6 +69,7 @@ class Venda
         $this->buscaIngressos = $banco->select('id = ' . $this->id)->fetch();
         $this->quantidadeNova = $this->buscaIngressos['quantidade'] - $this->quantidade;
         $this->id_evento = $this->buscaIngressos['id_evento'];
+        $this->id_ingresso = $this->buscaIngressos['id_ingresso'];
         $this->resultado();
     }
 
@@ -86,7 +93,7 @@ class Venda
     public function buscaDash()
     {
         $buscaDash = new Database("vendas");
-        $this->dadosDash = $buscaDash->select('id_evento = ' . $this->id_evento . ' AND id_ingresso = ' . $this->id)->fetch();
+        $this->dadosDash = $buscaDash->select('id_evento = ' . $this->id_evento . ' AND id_ingresso = ' . $this->id_ingresso)->fetch();
         $this->quantidadeVendas = $this->dadosDash['quantidade'];
         $this->quantidadeNovaVendas = $this->quantidadeVendas + $this->quantidade;
         $this->atualizaDash();
@@ -98,7 +105,7 @@ class Venda
     public function atualizaDash()
     {
         $atualizaVendas = new Database("vendas");
-        $atualizaVendas->update('id_evento =' . $this->id_evento . ' AND id_ingresso =' . $this->id , [
+        $atualizaVendas->update('id_evento =' . $this->id_evento . ' AND id_ingresso =' . $this->id_ingresso , [
             'quantidade' => $this->quantidadeNovaVendas
         ]);
         echo json_encode(['Quantidade disponível' => $this->quantidadeNova, 'Quantidade Vendida' => $this->quantidadeNovaVendas]);

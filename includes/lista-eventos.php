@@ -18,7 +18,7 @@ foreach ($listaEventos as $eventos) {
 <div class="container">
     <div class="px-2 container">
         <div class="boas-vindas">
-            <h2>Seja bem vindo, Will!</h2>
+            <h2>Seja bem vindo, <?= $nomeUser; ?>!</h2>
             <p class="horario"><?= date('d/m/Y H:i:s'); ?></p>
         </div>
         <div class="px-2">

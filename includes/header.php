@@ -36,6 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="cria_ingresso.php"  >Criar ingresso</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="logout.php"  >Encerrar sessão</a>
+                </li>
             </ul>
         </div>
     </nav>

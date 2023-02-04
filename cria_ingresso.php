@@ -1,8 +1,13 @@
 <?php
 
 use App\Entity\Ingresso;
+use App\Session\Login;
 
 require __DIR__.'/vendor/autoload.php';
+
+Login::requireLogin();
+
+
 
 if(isset($_POST['titulo'], $_POST['valor'])){
     $ingressoNovo = new Ingresso();

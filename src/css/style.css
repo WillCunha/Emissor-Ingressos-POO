@@ -104,6 +104,21 @@ td {
 	display: inline-flex;
 }
 
+.centerHorizontal {
+	height: 100vh;
+	display: grid;
+	align-content: center;
+	align-items: center;
+	
+}
+
+.centerVertical {
+	width: 100%;
+	justify-items: center;
+	display: grid;
+	background-color: #F8F9FA;
+}
+
 .second {
 	margin-top: -3%;
 }
@@ -114,6 +129,12 @@ td {
 	border-radius: 10px;
 	-webkit-box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.4);
 	box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.4);
+}
+
+.scroll {
+	min-height: 430px;
+	max-height: 430px;
+	overflow-y: scroll;
 }
 
 .corpo_inicio {
@@ -288,7 +309,6 @@ a:visited {
 	background-color: transparent;
 	color: #0067b8;
 	text-decoration: none;
-	border-bottom: 1px dotted;
 }
 
 a:hover,

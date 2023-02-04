@@ -13,6 +13,12 @@ class Login{
         }
     }
 
+    public static function getUserLogado(){
+        self::init();
+
+        return self::isLogged() ? $_SESSION['user'] : null;
+    }
+
 
     /**
      * Método que inicia o user
@@ -49,7 +55,7 @@ class Login{
     public static function isLogged(){
         self::init();
 
-        return self::isLogged() ? $_SESSION['user'] : null;
+        return isset($_SESSION['user']['id']);
     }   
 
     /**
@@ -58,6 +64,13 @@ class Login{
     public static function requireLogin(){
         if(!self::isLogged()){
             header('Location: login.php');
+            exit;
+        }
+    }
+
+    public static function requireLogout(){
+        if(self::isLogged()){
+            header('Location: index.php');
             exit;
         }
     }

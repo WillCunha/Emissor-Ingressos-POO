@@ -35,7 +35,7 @@ $data = DateTime::createFromFormat('Ymd', $evento->data);
                 <section id="tab-1" class="tab-body entry-content active active-content">
                     <h2 style="margin-top: -1%;"><?= $evento->titulo ?></h2>
                     <p style="margin-top: -1.5%;">Data: <? //$dia 
-                                ?>, <?= $data ?></p>
+                                                        ?>, <?= $data ?></p>
                     <div id="Home" class="tabcontent">
                         <div class="line first">
                             <div class="blocos corpo1">
@@ -93,22 +93,29 @@ $data = DateTime::createFromFormat('Ymd', $evento->data);
 
                 <section id="tab-2" class="tab-body entry-content">
                     <h2><?= $evento->titulo ?></h2>
-                    <p>Data: <? //$dia 
+                    <p>Data: <? $dia 
                                 ?>, <?= $data ?></p>
                     <div class="divider-2">
-                        <div class="blocos b-50">
-                            <h4>Alterar ingressos:</h4>
-                            <div class="b-33">
-                                <?php
-                                foreach ($graficoIngresso as $busca) {
-                                    $id = $busca['id'];
-                                    $nome_ingresso = $busca['nome_ingresso'];
-                                    $idIngresso = $busca['id_ingresso'];
-                                    $quantidade = $busca['quantidade'];
-
-                                    echo " <div class='col-destaque'>".$nome_ingresso."</div>";
-                                }
-                                ?>
+                        <div class="blocos b-50 scroll">
+                            <h4>Observações no(s) Ingresso(s):</h4>
+                            <div class="b-100">
+                                <form method="POST">
+                                    <?php
+                                    foreach ($ingressos as $ingresso) {
+                                        //$id = $ingresso['id'];
+                                        //$nome_ingresso = $ingresso['nome_ingresso'];
+                                        //$idIngresso = $ingresso['id_ingresso'];
+                                        //$quantidade = $ingresso['quantidade'];
+                                        //$obs_etiqueta = $ingresso['obs_etiqueta'];
+                                        $textarea = strlen($ingresso->obs_etiqueta) ? $ingresso->obs_etiqueta : 'Digite informações importantes para os compradores.';
+                                        echo "<div class='col-destaque'>" . $ingresso->nome_ingresso . ": </div>";
+                                        echo "<textarea name='observacoes[]' id='observacoes[]' cols='30' rows='2' class='form-control'>" . $textarea ."</textarea>";
+                                        echo '<input type="text" name="idIngresso[]" id="idIngresso" value="' . $ingresso->id . '" class="form-control" hidden>';
+                                    }
+                                    ?>
+                                    <button type="submit" class="btn btn-primary" id="add_evento_btn">Atualizar observações</button>
+                                    <p style="font-size: 12px; font-weight: 600;">As informações inseridas nos campos acima, serão exibidas na sessão "Observações" na impressão do ingresso.</p>
+                                </form>
                             </div>
                         </div>
                         <div class="blocos b-50">

@@ -3,8 +3,11 @@
 use App\Entity\Evento;
 use App\Entity\IngressoVenda;
 use App\File\Upload;
+use App\Session\Login;
 
 require __DIR__.'/vendor/autoload.php';
+
+Login::requireLogin();
 
 define('TITULO', 'Editar Evento');
 define('TITULOPAGE', 'Editar o evento: ');

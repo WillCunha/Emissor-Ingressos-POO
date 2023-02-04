@@ -4,8 +4,13 @@ use App\Entity\Evento;
 use App\Entity\Ingresso;
 use App\Entity\IngressoVenda;
 use App\File\Upload;
+use App\Session\Login;
 
 require __DIR__ . '/vendor/autoload.php';
+
+Login::requireLogin();
+
+
 
 define('TITULOPAGE', 'Gerar novo evento');
 

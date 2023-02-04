@@ -109,4 +109,14 @@ class Evento
                                         ->fetchObject(self::class);
     }
 
+        /**
+     * Método que busca um evento selecionado
+     * @param string $data
+     * @return Evento
+     */
+    public static function getEventoData($data){
+        return (new Database('eventos'))->select('data = ' .$data)
+                                        ->fetchObject(self::class);
+    }
+
 }
