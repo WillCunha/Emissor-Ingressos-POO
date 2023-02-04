@@ -3,26 +3,29 @@
 use App\Database\Database;
 use App\Entity\IngressoVenda;
 use App\Entity\Evento;
+//|| $param == ''
 
-if ($acao == '' || $param == '') {
-    echo json_encode(["Erro" => "Acao nao permitida!"]);
-    exit;
-}
-if ($acao == 'online') {
-    $dadosIngressos = IngressoVenda::getIngressoAVenda($param);
-    if ($dadosIngressos) {
-        echo json_encode(["dados" => $dadosIngressos]);
-    } else {
-        echo json_encode(["dados" => "Nao ha dados!"]);
+if ($acao == '') {
+    echo json_encode(["Erro:" => "Ação não permitida"]);
+} else if ($acao != '' && $param == '') {
+    $eventos = Evento::getEventos();
+    if ($eventos) {
+        echo json_encode(["dados" => $eventos]);
     }
-} else if ($acao == 'pdv') {
-    $dadosIngressos = Evento::getEventoData($param);
-    if ($dadosIngressos) {
-        echo json_encode(["dados" => $dadosIngressos]);
-    } else {
-        echo json_encode(["dados" => 0]);
+} else if ($acao != '' && $param != '') {
+    if ($acao == 'ingressos') {
+        $dadosIngressos = IngressoVenda::getIngressoAVenda($param);
+        if ($dadosIngressos) {
+            echo json_encode(["dados" => $dadosIngressos]);
+        } else {
+            echo json_encode(["dados" => "Nao ha dados!"]);
+        }
+    } else if ($acao == 'evento-data') {
+        $dadosIngressos = Evento::getEventoData($param);
+        if ($dadosIngressos) {
+            echo json_encode(["dados" => $dadosIngressos]);
+        } else {
+            echo json_encode(["dados" => 0]);
+        }
     }
-} else {
-    echo json_encode(["Erro" => "Acao nao permitida!"]);
-    exit;
 }

@@ -9,13 +9,13 @@ date_default_timezone_set('America/Sao_Paulo');
 if (isset($_GET['path'])) {
     $path = explode('/', $_GET['path']);
 } else {
-    echo 'Caminho não existe!';
+    echo json_encode(["dados" => "Caminho não existe!"]);
 };
 
 if (isset($path[0])) {
     $api = $path[0];
 } else {
-    echo "Caminho incorreto!";
+    echo json_encode(["dados" => "Caminho incorreto!"]);
 }
 if (isset($path[1])) {
     $acao = $path[1];
