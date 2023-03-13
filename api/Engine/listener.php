@@ -6,7 +6,7 @@ use Api\Engine\Venda;
 
 if ($api == 'eventos') {
     if ($method == 'GET') {
-        require_once('Ingressos.php');
+        require_once('Controller.php');
     }else{
         $fp = fopen('php://input', 'r');
         $rawData = stream_get_contents($fp);

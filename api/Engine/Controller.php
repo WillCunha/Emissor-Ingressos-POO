@@ -1,6 +1,5 @@
 <?php
 
-use App\Database\Database;
 use App\Entity\IngressoVenda;
 use App\Entity\Evento;
 //|| $param == ''
@@ -27,5 +26,14 @@ if ($acao == '') {
         } else {
             echo json_encode(["dados" => 0]);
         }
+    } else if ($acao == 'evento-id') {
+        $dadosIngressos = Evento::getEvento($param);
+        if ($dadosIngressos) {
+            echo json_encode(["dados" => $dadosIngressos]);
+        } else {
+            echo json_encode(["dados" => 0]);
+        }
     }
 }
+
+?>

@@ -16,6 +16,7 @@
             packages: ['corechart']
         });
     </script>
+    <link rel="icon" type="image/x-icon" href="src/images/favicon.png">
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary pe-5 ps-5">
